@@ -21,8 +21,8 @@ namespace Fractal
         public FractalRule(string rule)
         {
             string[] items = rule.Split(new [] { "->" }, StringSplitOptions.None);
-            Literal = items[0].First();
-            Rule = items[1];
+            Literal = items[0].Trim().First();
+            Rule = items[1].Trim();
         }
 
         /// <summary>

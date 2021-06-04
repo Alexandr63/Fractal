@@ -11,7 +11,6 @@ namespace Fractal
     public partial class TestFractalsForm : Form
     {
         private IFractal _fractal;
-        private int _generation;
 
         /// <summary>
         /// Ctor.
@@ -106,11 +105,17 @@ namespace Fractal
             //};
 
             //_fractal = new SimpleFractal("FF-FF-FF-FF", "FF+FF", 90);
+
             //_fractal = new SimpleFractal("FF-FFF-FFF-FF", "FF+FF", 90);
+
             //_fractal = new SimpleFractal("FFF-FF-FF-FFF", "FF+FF", 90);
+
             //_fractal = new SimpleFractal("FF-FF-FF-FF", "FF+FFF", 90);
+
             //_fractal = new SimpleFractal("FF-FF-FF-FF", "FF+F", 90);
+
             //_fractal = new SimpleFractal("FF-FFF-FF-FFF", "F+F-F", 90);
+
             //_fractal = new SimpleFractal("FF+++F+++FF+++F+++FF+++F+++FF", "FFF----F----FFF----F----FFF", 15);
 
             //_fractal = new SimpleFractal("FF-FF-FF", "+F-F+", 120)
@@ -187,7 +192,7 @@ namespace Fractal
 
 
             //// L - система для дракона Хартера - Хейтвея
-            //_fractal = new Fractal("FX", new[] {"X->X+YF", "Y->FX-Y"}, 90, new char[] {'F'})
+            // _fractal = new Fractal("FX", new[] {"X->X+YF", "Y->FX-Y"}, 90, new char[] {'F'})
             //{
             //    StartPoint = new Point(400, 400),
             //    LineLength = 10
@@ -219,15 +224,15 @@ namespace Fractal
             //    StartPoint = new Point(200, 400),
             //    LineLength = 2
             //};
-
-            //// Дерево с изменениями в линиях и цвете
-            _fractal = new ColoredTreeFractal("X", "X->F[@[-X]+X]", new[] { "F->FORWARD 1", "X->FORWARD 1", "+->ROTATE_RANDOM 0 45", "-->ROTATE_RANDOM 0 45", "[->SAVE", "]->RESTORE", "@->CHANGE_TREE" })
-            {
-                Color = Color.Black,
-                LineLength = 40,
-                LineWidth = 10,
-                StartPoint = new Point(300, 400)
-            };
+            
+            // Дерево с изменениями в линиях и цвете
+            //_fractal = new ColoredTreeFractal("X", "X->F[@[-X]+X]", new[] { "F->FORWARD 1", "X->FORWARD 1", "+->ROTATE_RANDOM 0 45", "-->ROTATE_RANDOM 0 45", "[->SAVE", "]->RESTORE", "@->CHANGE_TREE" })
+            //{
+            //    Color = Color.Black,
+            //    LineLength = 40,
+            //    LineWidth = 10,
+            //    StartPoint = new Point(300, 400)
+            //};            
             //_fractal = new ColoredTreeFractal("X", "X->F[@[-X]+X]", new[] { "F->FORWARD 1", "X->FORWARD 1", "+->ROTATE_RANDOM 10 35", "-->ROTATE_RANDOM -10 35", "[->SAVE", "]->RESTORE", "@->CHANGE_TREE" })
             //{
             //    // переопределяем цвета, теперь коньчики веток будут красные, а остальные линии черные, при этом длина и толщина веток по прежнему будет изменяться
@@ -251,7 +256,7 @@ namespace Fractal
             //    LineLength = 3,
             //    StartPoint = new Point(200, 400)
             //};
-            //_fractal = new FractalExt("X", new[] {"F->FF", "X->F[+X]F[-X]+X"}, new[] { "F->FORWARD 1", "X->FORWARD 1", "+->ROTATE_RANDOM 45", "-->ROTATE_RANDOM -45", "[->SAVE", "]->RESTORE" })
+            //_fractal = new FractalExt("X", new[] {"F->FF", "X->F[+X]F[-X]+X"}, new[] { "F->FORWARD 1", "X->FORWARD 1", "+->ROTATE_RANDOM 45 20", "-->ROTATE_RANDOM -45 20", "[->SAVE", "]->RESTORE" })
             //{
             //    LiteralColors =
             //    {
@@ -285,13 +290,11 @@ namespace Fractal
             //};
 
             //// L - система Algæ
-            //_fractal = new FractalExt("A", new[] {"A->B", "B->AB"}, new[] {"A->ROTATE 60;FORWARD 1", "B->ROTATE -60;FORWARD 1"})
+            //_fractal = new FractalExt("A", new[] { "A->B", "B->AB" }, new[] { "A->ROTATE 60,FORWARD 1", "B->ROTATE -60,FORWARD 1" })
             //{
             //    LineLength = 20,
             //    StartPoint = new Point(400, 400)
             //};
-
-            _generation = 0;
         }
 
         /// <summary>
@@ -299,7 +302,8 @@ namespace Fractal
         /// </summary>
         private void ResetButtonClickEventHandler(object sender, EventArgs e)
         {
-            InitializeFractal();
+            // InitializeFractal();
+            _fractal.Reset();
 
             _drawPanel.Refresh();
         }
@@ -313,7 +317,6 @@ namespace Fractal
             Application.DoEvents();
 
             _fractal.NextGeneration();
-            _generation++;
 
             _drawPanel.Refresh();
 
@@ -325,7 +328,7 @@ namespace Fractal
         /// </summary>
         private void DrawPanelPaintEventHandler(object sender, PaintEventArgs e)
         {
-            _generationLabel.Text = $"Поколение {_generation}";
+            _generationLabel.Text = $"Поколение {_fractal.Generation}";
 
             // При необходимости можно повернуть изображение
             /*

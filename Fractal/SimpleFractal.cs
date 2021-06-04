@@ -82,6 +82,16 @@ namespace Fractal
 
         #region Public Methods
 
+
+        /// <summary>
+        /// Сбросить состояние фрактала в 0 поколение
+        /// </summary>
+        public void Reset()
+        {
+            Generation = 0;
+            ResultString = Axiom;
+        }
+
         /// <summary>
         /// Сформировать следующее поколение фрактала.
         /// </summary>

@@ -46,5 +46,10 @@ namespace Fractal
         /// Нарисовать фрактал в заданный объект <see cref="Graphics"/>.
         /// </summary>
         void Draw(Graphics g);
+
+        /// <summary>
+        /// Сбросить состояние фрактала в 0 поколение
+        /// </summary>
+        void Reset();
     }
 }

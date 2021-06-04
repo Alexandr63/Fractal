@@ -15,8 +15,8 @@ namespace Fractal
     /// BREAK - перейти к следующей точке на один шаг без отрисовки линии.
     /// ROTATE X - поворот по часовой стрелке на указанное зачение в градусах
     /// ROTATE -X - поворот против часовой стрелке на указанное зачение в градусах
-    /// ROTATE_RANDOM X/Y - поворот по часовой стрелке на случайный угол в градусах X + случайное значение от -Y до +Y
-    /// ROTATE_RANDOM -X/Y - поворот против часовой стрелке на случайный угол в градусах X + случайное значение от -Y до +Y
+    /// ROTATE_RANDOM X Y - поворот по часовой стрелке на случайный угол в градусах X + случайное значение от -Y до +Y
+    /// ROTATE_RANDOM -X Y - поворот против часовой стрелке на случайный угол в градусах X + случайное значение от -Y до +Y
     /// SAVE - сохранить текущее состояние
     /// RESTORE - восстановить состояние
     /// FORWARD - перейти к следующей точке на один шагc отрисовкой линии.
@@ -81,6 +81,11 @@ namespace Fractal
         }
 
         /// <summary>
+        /// Описание фрактала
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
         /// Текущая строка фрактала.
         /// </summary>
         public string ResultString { get; private set; }
@@ -113,7 +118,7 @@ namespace Fractal
         /// <summary>
         /// Стартовая точка для рисования.
         /// </summary>
-        public Point StartPoint { get; set; }
+        public Point StartPoint { get; set; } = new Point(600, 300);
 
         /// <summary>
         /// Длина линии при рисовании фрактала.
@@ -144,6 +149,18 @@ namespace Fractal
         /// Текущй угол при отрисовке фрактала.
         /// </summary>
         protected int CurrentAngle { get; set; }
+
+        /// <summary>
+        /// Сбросить состояние фрактала в 0 поколение
+        /// </summary>
+        public void Reset()
+        {
+            CurrentPoint = StartPoint;
+            CurrentAngle = 0;
+            Generation = 0;
+            States.Clear();
+            ResultString = Axiom;
+        }
 
         /// <summary>
         /// Сформировать следующее поколение фрактала.
@@ -280,6 +297,25 @@ namespace Fractal
         /// <param name="command">Текущая команда.</param>
         protected virtual void ExecuteCustomCommand(Graphics g, char literal, FractalCommand command)
         {
+        }
+
+        public override string ToString()
+        {
+            string rules = string.Empty;
+            foreach (KeyValuePair<char, FractalRule> rule in Rules)
+            {
+                rules += $"{rule.Value.Literal}->{rule.Value.Rule};";
+            }
+            rules = rules.TrimEnd(';');
+
+            if (string.IsNullOrWhiteSpace(Description))
+            {
+                return $"Аксиома: '{Axiom}'. Правила: {rules}.";
+            }
+            else
+            {
+                return $"Аксиома: '{Axiom}'. Правила: {rules}. {Description}.";
+            }
         }
     }
 }

@@ -22,9 +22,9 @@ namespace Fractal
         public FractalInterpretation(string interpretations)
         {
             string[] items = interpretations.Split(new[] { "->" }, StringSplitOptions.None);
-            Literal = items[0].First();
+            Literal = items[0].Trim().First();
 
-            foreach (string command in items[1].Split(';'))
+            foreach (string command in items[1].Trim().Split(','))
             {
                 Commands.Add(new FractalCommand(command));
             }

@@ -23,15 +23,15 @@ namespace Fractal
         /// <param name="command">Команда и аргумент.</param>
         public FractalCommand(string command)
         {
-            string[] items = command.Split(' ');
+            string[] items = command.Trim().Split(' ');
 
-            Command = items[0];
+            Command = items[0].Trim();
 
             if (items.Length > 1)
             {
                 for (int i = 1; i < items.Length; i++)
                 {
-                    Arguments.Add(int.Parse(items[i]));
+                    Arguments.Add(int.Parse(items[i].Trim()));
                 }
 
                 Argument = Arguments.First();
