@@ -279,7 +279,7 @@ namespace FractalDesigner
             this.Controls.Add(this._axiomLabel);
             this.MinimumSize = new System.Drawing.Size(300, 330);
             this.Name = "EditFractalDialogForm";
-            this.Text = "Создание фрактала";
+            this.Text = "Редактирование фрактала";
             ((System.ComponentModel.ISupportInitialize)(this._lineLengthNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._lineWidthNumericUpDown)).EndInit();
             this.ResumeLayout(false);

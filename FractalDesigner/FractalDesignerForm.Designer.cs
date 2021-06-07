@@ -30,21 +30,21 @@ namespace FractalDesigner
         private void InitializeComponent()
         {
             this._toolStrip = new System.Windows.Forms.ToolStrip();
+            this._editFractalToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this._loadToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this._resetToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this._nextGenerationToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this._generationToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this._drawPanel = new System.Windows.Forms.Panel();
-            this._createFractalToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this._loadToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this._resetToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this._nextGenerationToolStripButton = new System.Windows.Forms.ToolStripButton();
             this._toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // _toolStrip
             // 
             this._toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this._createFractalToolStripButton,
+            this._editFractalToolStripButton,
             this._loadToolStripButton,
             this.toolStripSeparator1,
             this._resetToolStripButton,
@@ -57,10 +57,50 @@ namespace FractalDesigner
             this._toolStrip.TabIndex = 4;
             this._toolStrip.Text = "toolStrip1";
             // 
+            // _editFractalToolStripButton
+            // 
+            this._editFractalToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._editFractalToolStripButton.Image = global::FractalDesigner.Properties.Resources.Edit;
+            this._editFractalToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._editFractalToolStripButton.Name = "_editFractalToolStripButton";
+            this._editFractalToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this._editFractalToolStripButton.Text = "Редактировать фрактал";
+            this._editFractalToolStripButton.Click += new System.EventHandler(this.EdtiFractalToolStripButtonClickEventHandler);
+            // 
+            // _loadToolStripButton
+            // 
+            this._loadToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._loadToolStripButton.Image = global::FractalDesigner.Properties.Resources.Load;
+            this._loadToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._loadToolStripButton.Name = "_loadToolStripButton";
+            this._loadToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this._loadToolStripButton.Text = "Загрузить фрактал";
+            this._loadToolStripButton.Click += new System.EventHandler(this.LoadToolStripButtonClickEventHandler);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // _resetToolStripButton
+            // 
+            this._resetToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._resetToolStripButton.Image = global::FractalDesigner.Properties.Resources.Reset;
+            this._resetToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._resetToolStripButton.Name = "_resetToolStripButton";
+            this._resetToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this._resetToolStripButton.Text = "Сбросить поколения в 0";
+            this._resetToolStripButton.Click += new System.EventHandler(this.ResetToolStripButtonClickEventHandler);
+            // 
+            // _nextGenerationToolStripButton
+            // 
+            this._nextGenerationToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._nextGenerationToolStripButton.Image = global::FractalDesigner.Properties.Resources.NextGeneration;
+            this._nextGenerationToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._nextGenerationToolStripButton.Name = "_nextGenerationToolStripButton";
+            this._nextGenerationToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this._nextGenerationToolStripButton.Text = "Следующее поколение";
+            this._nextGenerationToolStripButton.Click += new System.EventHandler(this.NextGenerationToolStripButtonClickEventHandler);
             // 
             // toolStripSeparator2
             // 
@@ -84,46 +124,6 @@ namespace FractalDesigner
             this._drawPanel.TabIndex = 5;
             this._drawPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPanelPaintEventHandler);
             // 
-            // _createFractalToolStripButton
-            // 
-            this._createFractalToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._createFractalToolStripButton.Image = global::FractalDesigner.Properties.Resources.New;
-            this._createFractalToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._createFractalToolStripButton.Name = "_createFractalToolStripButton";
-            this._createFractalToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this._createFractalToolStripButton.Text = "Создать фрактал";
-            this._createFractalToolStripButton.Click += new System.EventHandler(this.CreateFractalToolStripButtonClickEventHandler);
-            // 
-            // _loadToolStripButton
-            // 
-            this._loadToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._loadToolStripButton.Image = global::FractalDesigner.Properties.Resources.Load1;
-            this._loadToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._loadToolStripButton.Name = "_loadToolStripButton";
-            this._loadToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this._loadToolStripButton.Text = "Загрузить фрактал";
-            this._loadToolStripButton.Click += new System.EventHandler(this.LoadToolStripButtonClickEventHandler);
-            // 
-            // _resetToolStripButton
-            // 
-            this._resetToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._resetToolStripButton.Image = global::FractalDesigner.Properties.Resources.Reset;
-            this._resetToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._resetToolStripButton.Name = "_resetToolStripButton";
-            this._resetToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this._resetToolStripButton.Text = "Сбросить поколения в 0";
-            this._resetToolStripButton.Click += new System.EventHandler(this.ResetToolStripButtonClickEventHandler);
-            // 
-            // _nextGenerationToolStripButton
-            // 
-            this._nextGenerationToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._nextGenerationToolStripButton.Image = global::FractalDesigner.Properties.Resources.NextGeneration;
-            this._nextGenerationToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._nextGenerationToolStripButton.Name = "_nextGenerationToolStripButton";
-            this._nextGenerationToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this._nextGenerationToolStripButton.Text = "Следующее поколение";
-            this._nextGenerationToolStripButton.Click += new System.EventHandler(this.NextGenerationToolStripButtonClickEventHandler);
-            // 
             // FractalDesignerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,7 +143,7 @@ namespace FractalDesigner
         #endregion
 
         private System.Windows.Forms.ToolStrip _toolStrip;
-        private System.Windows.Forms.ToolStripButton _createFractalToolStripButton;
+        private System.Windows.Forms.ToolStripButton _editFractalToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton _resetToolStripButton;
         private System.Windows.Forms.ToolStripButton _nextGenerationToolStripButton;

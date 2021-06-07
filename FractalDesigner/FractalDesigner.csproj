@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateFractalDialogForm.cs">
+    <Compile Include="EditFractalDialogForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateFractalDialogForm.Designer.cs">
-      <DependentUpon>CreateFractalDialogForm.cs</DependentUpon>
+    <Compile Include="EditFractalDialogForm.Designer.cs">
+      <DependentUpon>EditFractalDialogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FractalDesignerForm.cs">
       <SubType>Form</SubType>
@@ -58,6 +58,7 @@
     <Compile Include="FractalDesignerForm.Designer.cs">
       <DependentUpon>FractalDesignerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FractalSource.cs" />
     <Compile Include="LoadFractalDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,8 +67,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CreateFractalDialogForm.resx">
-      <DependentUpon>CreateFractalDialogForm.cs</DependentUpon>
+    <EmbeddedResource Include="EditFractalDialogForm.resx">
+      <DependentUpon>EditFractalDialogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FractalDesignerForm.resx">
       <DependentUpon>FractalDesignerForm.cs</DependentUpon>
@@ -77,18 +78,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -100,7 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons\Load.png" />
-    <Content Include="Icons\New.png" />
+    <Content Include="Icons\Edit.png" />
     <Content Include="Icons\NextGeneration.png" />
     <Content Include="Icons\Reset.png" />
   </ItemGroup>

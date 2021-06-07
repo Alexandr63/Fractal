@@ -7,15 +7,24 @@ using Fractal;
 
 namespace FractalDesigner
 {
-    public partial class CreateFractalDialogForm : Form
+    /// <summary>
+    /// форма редактирования фрактала
+    /// </summary>
+    public partial class EditFractalDialogForm : Form
     {
         private FractalExt _fractal;
 
-        public CreateFractalDialogForm()
+        /// <summary>
+        /// Ctor.
+        /// </summary>
+        public EditFractalDialogForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Отредактированный фрактал
+        /// </summary>
         public FractalExt Fractal
         {
             get => _fractal;
@@ -26,6 +35,9 @@ namespace FractalDesigner
             }
         }
 
+        /// <summary>
+        /// Обновление состояния UI
+        /// </summary>
         private void UpdateUi()
         {
             if (_fractal != null)
@@ -88,6 +100,9 @@ namespace FractalDesigner
             }
         }
 
+        /// <summary>
+        /// Прочитать данные из UI и сохраить изменения в классе фрактала
+        /// </summary>
         private void Save()
         {
             string[] startCoordinates = _startPointTextBox.Text.Trim().Split(',');
@@ -113,6 +128,9 @@ namespace FractalDesigner
             }
         }
 
+        /// <summary>
+        /// Обработчик события нажатия на кнопку 'Сохранить'
+        /// </summary>
         private void SaveButtonClickEventHandler(object sender, EventArgs e)
         {
             try
@@ -130,6 +148,9 @@ namespace FractalDesigner
             }
         }
 
+        /// <summary>
+        /// Обработчик события нажатия на кнопку 'Отмена'
+        /// </summary>
         private void CancelButtonClickEventHandler(object sender, EventArgs e)
         {
             Close();
